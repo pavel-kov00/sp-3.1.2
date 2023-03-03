@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String name;
     private String lastname;
     private int age;
@@ -45,7 +45,7 @@ public class User {
         this.gender = genre;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

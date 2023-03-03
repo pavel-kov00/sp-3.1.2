@@ -9,13 +9,6 @@ import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao{
-//
-//    private SessionFactory sessionFactory;
-//
-//    @Autowired
-//    public void setSessionFactory(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -31,18 +24,17 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User getUser(int id) {
+    public User getUser(long id) {
         return entityManager.find(User.class,id);
     }
 
     @Override
-    public void deleteUser(int id) {
-        User user = getUser(id);
-        entityManager.remove(user);
+    public void deleteUser(long id) {
+        entityManager.remove(getUser(id));
     }
 
     @Override
-    public void updateUser(User us,int id) {
+    public void updateUser(User us, long id) {
         User user = getUser(id);
         user.setName(us.getName());
         user.setLastname(us.getLastname());
